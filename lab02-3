@@ -1,0 +1,113 @@
+const byte SW = 13;
+const byte startPin = 1;
+const byte endPin = 8;
+
+void setup() {
+pinMode(SW,INPUT);
+for (byte i = startPin; i<= endPin; i++) {
+pinMode(i, OUTPUT);
+}
+}
+byte i,j;
+byte lightPin = startPin;
+void loop()
+{
+boolean val = digitalRead(13);
+  if(val)
+{
+  for (i=startPin; i<= endPin; i++) {
+  digitalWrite(i,HIGH);}
+  delay (500);
+for (i=startPin; i<= endPin; i++) {
+  digitalWrite(i,LOW);}
+  delay (500);
+for (i=startPin; i<= endPin; i++) {
+  digitalWrite(i,HIGH);}
+  delay (500);
+for (i=startPin; i<= endPin; i++) {
+  digitalWrite(i,LOW);}
+  delay (500);
+  lightPin = startPin;
+  for(j=1;j<=8;j++)
+{
+for (i=startPin; i<= endPin; i++) {
+digitalWrite(i,LOW);
+}
+digitalWrite(lightPin, HIGH);
+if (lightPin < endPin) {
+lightPin ++;
+} else {
+lightPin = startPin;
+}
+
+
+delay (500);
+}
+  for (i=startPin; i<= endPin; i++) {
+  digitalWrite(i,HIGH);}
+  delay (500);
+for (i=startPin; i<= endPin; i++) {
+  digitalWrite(i,LOW);}
+  delay (500);
+for (i=startPin; i<= endPin; i++) {
+  digitalWrite(i,HIGH);}
+  delay (500);
+for (i=startPin; i<= endPin; i++) {
+  digitalWrite(i,LOW);}
+  delay (500);
+  lightPin = endPin;
+  for(j=1;j<=8;j++)
+{
+
+
+for (i=endPin; i>=startPin; i--) {
+digitalWrite(i,LOW);
+}
+  
+digitalWrite(lightPin, HIGH);
+
+if (lightPin > startPin) {
+lightPin --;
+} else {
+lightPin = endPin;
+}
+delay (500);
+} 
+}
+  else
+  {
+    lightPin = startPin;
+  for(j=1;j<=8;j++)
+{
+for (i=startPin; i<= endPin; i++) {
+digitalWrite(i,LOW);
+}
+digitalWrite(lightPin, HIGH);
+if (lightPin < endPin) {
+lightPin ++;
+} else {
+lightPin = startPin;
+}
+
+delay (500);
+}
+  lightPin = endPin;
+  for(j=1;j<=8;j++)
+{
+
+for (i=endPin; i>=startPin; i--) {
+digitalWrite(i,LOW);
+}
+digitalWrite(lightPin, HIGH);
+
+if (lightPin > startPin) {
+lightPin --;
+} else {
+lightPin = endPin;
+}
+// 點亮 LED
+
+delay (500);
+}
+  }
+}
